@@ -12,9 +12,25 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		173B69057357445CA05154F0 /* Harmattan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F7BBC345A6410895C3EC6F /* Harmattan-Regular.ttf */; };
+		2A8845E02DDF4E5897A8B773 /* Harmattan-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F82DE47F1B644BB9A5EBF4A /* Harmattan-Medium.ttf */; };
+		2E79AB8C6A574C63AEDB6066 /* Harmattan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBFBF956FDBF4A218715D443 /* Harmattan-Bold.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-EzanVaktiPro-EzanVaktiProTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-EzanVaktiPro-EzanVaktiProTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9F2089FE7B03313C146D0C81 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B38F45B7F8415B6C5F95A0BB /* PrivacyInfo.xcprivacy */; };
+		A5FA6FEFDD564FF388CFCDBA /* Harmattan-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD8413340FBF47C7A70CFC5A /* Harmattan-SemiBold.ttf */; };
+		8B6B3BC4C4EB4CD880C53A7B /* Alegreya-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 83C3FA19264248A18A13B5F8 /* Alegreya-Black.otf */; };
+		ABD918C4704841EE8582A0D0 /* Alegreya-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A781ACF612554758A6FE7124 /* Alegreya-BlackItalic.otf */; };
+		B12A0B30CAD840C9BF8E72EE /* Alegreya-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CB5472238B774295B8974CBB /* Alegreya-Bold.otf */; };
+		96F1B6B86CF84A0FA6133D84 /* Alegreya-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C567994ACD514E1ABA85148B /* Alegreya-BoldItalic.otf */; };
+		6F1C321640AC4B1A9455D141 /* Alegreya-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9204A57959E74FC195126361 /* Alegreya-Italic.otf */; };
+		EB450F891BD145A5B2FE57C5 /* Alegreya-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26CDEF5737604B60AD9E86CE /* Alegreya-Regular.otf */; };
+		ECE6B6ABFD834EBF814E12D9 /* AlegreyaSC-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A92A80781D5A44088D51C5B3 /* AlegreyaSC-Black.otf */; };
+		F4AA8F37A23F4F3788D5CDEF /* AlegreyaSC-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 14AD073EA30842BB80FCCCA5 /* AlegreyaSC-BlackItalic.otf */; };
+		9FA3800A50BB4CB0955D3225 /* AlegreyaSC-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B844A0AFBF14308989DA57B /* AlegreyaSC-Bold.otf */; };
+		88DB72EC8B58483B9CAFBE55 /* AlegreyaSC-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6BE97743873F4E9C8B268104 /* AlegreyaSC-BoldItalic.otf */; };
+		2097C69EE4494EFFBECC02F7 /* AlegreyaSC-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A473ED5DCD874127986BCE86 /* AlegreyaSC-Italic.otf */; };
+		661E7960A0B64017BCDD2EF2 /* AlegreyaSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2922B69A4E17454E84D750A5 /* AlegreyaSC-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +54,9 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = EzanVaktiPro/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = EzanVaktiPro/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = EzanVaktiPro/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		17F7BBC345A6410895C3EC6F /* Harmattan-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Harmattan-Regular.ttf"; path = "../src/assets/fonts/Harmattan-Regular.ttf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-EzanVaktiPro-EzanVaktiProTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EzanVaktiPro-EzanVaktiProTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F82DE47F1B644BB9A5EBF4A /* Harmattan-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Harmattan-Medium.ttf"; path = "../src/assets/fonts/Harmattan-Medium.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-EzanVaktiPro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EzanVaktiPro.debug.xcconfig"; path = "Target Support Files/Pods-EzanVaktiPro/Pods-EzanVaktiPro.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-EzanVaktiPro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EzanVaktiPro.release.xcconfig"; path = "Target Support Files/Pods-EzanVaktiPro/Pods-EzanVaktiPro.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-EzanVaktiPro-EzanVaktiProTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EzanVaktiPro-EzanVaktiProTests.debug.xcconfig"; path = "Target Support Files/Pods-EzanVaktiPro-EzanVaktiProTests/Pods-EzanVaktiPro-EzanVaktiProTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -46,7 +64,21 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = EzanVaktiPro/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-EzanVaktiPro-EzanVaktiProTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EzanVaktiPro-EzanVaktiProTests.release.xcconfig"; path = "Target Support Files/Pods-EzanVaktiPro-EzanVaktiProTests/Pods-EzanVaktiPro-EzanVaktiProTests.release.xcconfig"; sourceTree = "<group>"; };
 		B38F45B7F8415B6C5F95A0BB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = EzanVaktiPro/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		BD8413340FBF47C7A70CFC5A /* Harmattan-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Harmattan-SemiBold.ttf"; path = "../src/assets/fonts/Harmattan-SemiBold.ttf"; sourceTree = "<group>"; };
+		DBFBF956FDBF4A218715D443 /* Harmattan-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Harmattan-Bold.ttf"; path = "../src/assets/fonts/Harmattan-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		83C3FA19264248A18A13B5F8 /* Alegreya-Black.otf */ = {isa = PBXFileReference; name = "Alegreya-Black.otf"; path = "../src/assets/fonts/Alegreya-Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A781ACF612554758A6FE7124 /* Alegreya-BlackItalic.otf */ = {isa = PBXFileReference; name = "Alegreya-BlackItalic.otf"; path = "../src/assets/fonts/Alegreya-BlackItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CB5472238B774295B8974CBB /* Alegreya-Bold.otf */ = {isa = PBXFileReference; name = "Alegreya-Bold.otf"; path = "../src/assets/fonts/Alegreya-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C567994ACD514E1ABA85148B /* Alegreya-BoldItalic.otf */ = {isa = PBXFileReference; name = "Alegreya-BoldItalic.otf"; path = "../src/assets/fonts/Alegreya-BoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9204A57959E74FC195126361 /* Alegreya-Italic.otf */ = {isa = PBXFileReference; name = "Alegreya-Italic.otf"; path = "../src/assets/fonts/Alegreya-Italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		26CDEF5737604B60AD9E86CE /* Alegreya-Regular.otf */ = {isa = PBXFileReference; name = "Alegreya-Regular.otf"; path = "../src/assets/fonts/Alegreya-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A92A80781D5A44088D51C5B3 /* AlegreyaSC-Black.otf */ = {isa = PBXFileReference; name = "AlegreyaSC-Black.otf"; path = "../src/assets/fonts/AlegreyaSC-Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		14AD073EA30842BB80FCCCA5 /* AlegreyaSC-BlackItalic.otf */ = {isa = PBXFileReference; name = "AlegreyaSC-BlackItalic.otf"; path = "../src/assets/fonts/AlegreyaSC-BlackItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9B844A0AFBF14308989DA57B /* AlegreyaSC-Bold.otf */ = {isa = PBXFileReference; name = "AlegreyaSC-Bold.otf"; path = "../src/assets/fonts/AlegreyaSC-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6BE97743873F4E9C8B268104 /* AlegreyaSC-BoldItalic.otf */ = {isa = PBXFileReference; name = "AlegreyaSC-BoldItalic.otf"; path = "../src/assets/fonts/AlegreyaSC-BoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A473ED5DCD874127986BCE86 /* AlegreyaSC-Italic.otf */ = {isa = PBXFileReference; name = "AlegreyaSC-Italic.otf"; path = "../src/assets/fonts/AlegreyaSC-Italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2922B69A4E17454E84D750A5 /* AlegreyaSC-Regular.otf */ = {isa = PBXFileReference; name = "AlegreyaSC-Regular.otf"; path = "../src/assets/fonts/AlegreyaSC-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +133,30 @@
 			name = EzanVaktiPro;
 			sourceTree = "<group>";
 		};
+		194BBF1F2E9B400988C3388D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DBFBF956FDBF4A218715D443 /* Harmattan-Bold.ttf */,
+				1F82DE47F1B644BB9A5EBF4A /* Harmattan-Medium.ttf */,
+				17F7BBC345A6410895C3EC6F /* Harmattan-Regular.ttf */,
+				BD8413340FBF47C7A70CFC5A /* Harmattan-SemiBold.ttf */,
+				83C3FA19264248A18A13B5F8 /* Alegreya-Black.otf */,
+				A781ACF612554758A6FE7124 /* Alegreya-BlackItalic.otf */,
+				CB5472238B774295B8974CBB /* Alegreya-Bold.otf */,
+				C567994ACD514E1ABA85148B /* Alegreya-BoldItalic.otf */,
+				9204A57959E74FC195126361 /* Alegreya-Italic.otf */,
+				26CDEF5737604B60AD9E86CE /* Alegreya-Regular.otf */,
+				A92A80781D5A44088D51C5B3 /* AlegreyaSC-Black.otf */,
+				14AD073EA30842BB80FCCCA5 /* AlegreyaSC-BlackItalic.otf */,
+				9B844A0AFBF14308989DA57B /* AlegreyaSC-Bold.otf */,
+				6BE97743873F4E9C8B268104 /* AlegreyaSC-BoldItalic.otf */,
+				A473ED5DCD874127986BCE86 /* AlegreyaSC-Italic.otf */,
+				2922B69A4E17454E84D750A5 /* AlegreyaSC-Regular.otf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +183,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				194BBF1F2E9B400988C3388D /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -249,6 +306,22 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				9F2089FE7B03313C146D0C81 /* PrivacyInfo.xcprivacy in Resources */,
+				2E79AB8C6A574C63AEDB6066 /* Harmattan-Bold.ttf in Resources */,
+				2A8845E02DDF4E5897A8B773 /* Harmattan-Medium.ttf in Resources */,
+				173B69057357445CA05154F0 /* Harmattan-Regular.ttf in Resources */,
+				A5FA6FEFDD564FF388CFCDBA /* Harmattan-SemiBold.ttf in Resources */,
+				8B6B3BC4C4EB4CD880C53A7B /* Alegreya-Black.otf in Resources */,
+				ABD918C4704841EE8582A0D0 /* Alegreya-BlackItalic.otf in Resources */,
+				B12A0B30CAD840C9BF8E72EE /* Alegreya-Bold.otf in Resources */,
+				96F1B6B86CF84A0FA6133D84 /* Alegreya-BoldItalic.otf in Resources */,
+				6F1C321640AC4B1A9455D141 /* Alegreya-Italic.otf in Resources */,
+				EB450F891BD145A5B2FE57C5 /* Alegreya-Regular.otf in Resources */,
+				ECE6B6ABFD834EBF814E12D9 /* AlegreyaSC-Black.otf in Resources */,
+				F4AA8F37A23F4F3788D5CDEF /* AlegreyaSC-BlackItalic.otf in Resources */,
+				9FA3800A50BB4CB0955D3225 /* AlegreyaSC-Bold.otf in Resources */,
+				88DB72EC8B58483B9CAFBE55 /* AlegreyaSC-BoldItalic.otf in Resources */,
+				2097C69EE4494EFFBECC02F7 /* AlegreyaSC-Italic.otf in Resources */,
+				661E7960A0B64017BCDD2EF2 /* AlegreyaSC-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
