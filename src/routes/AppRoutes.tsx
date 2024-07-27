@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../pages/Home.tsx';
-import Compass from '../pages/Compass.tsx';
+import Compass from '../pages/CompassScreen.tsx';
 import Settings from '../pages/Settings.tsx';
 import MonthlyPrayTimes from '../pages/30DaysPrayTimes.tsx';
 import React from 'react';
@@ -14,10 +14,10 @@ const AppRoutes: React.FC = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Compass" component={Compass} />
-      <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="MonthlyPrayTimes" component={MonthlyPrayTimes} />
+      <Stack.Screen name="Compass" component={Compass} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
   );
 };

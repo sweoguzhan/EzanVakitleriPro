@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from 'react-native';
 // @ts-ignore
-import AsrBg from '../assets/backgrounds/Dhuhr.png';
+import AsrBg from '../assets/backgrounds/Fajr.png';
 // @ts-ignore
 import {SvgXml} from 'react-native-svg';
 
@@ -70,7 +70,7 @@ const Home = () => {
               <Text style={styles.timeTxt}>06:34</Text>
             </View>
           </View>
-          <View style={styles.timeView}>
+          <View style={styles.timeViewNext}>
             <View style={styles.timeIconView}>
               <View style={styles.flexView}>
                 <View>
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '50%',
+    marginTop: '25%',
     zIndex: 1,
     width: '100%',
   },
@@ -150,10 +150,23 @@ const styles = StyleSheet.create({
     width: screenWidth * 0.9,
     alignItems: 'center',
   },
+  timeViewNext: {
+    backgroundColor: '#32CD32',
+    borderRadius: 15,
+    width: screenWidth * 0.9,
+    alignItems: 'center',
+    padding: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.4,
+    shadowRadius: 10,
+    elevation: 10,
+    zIndex: 1,
+  },
   timeTxt: {
     color: 'white',
     fontSize: 24,
-    fontFamily: 'Alegreya-Regular',
+    fontFamily: 'Alegreya-bold',
   },
   timeIconView: {
     flexDirection: 'row',
@@ -172,12 +185,12 @@ const styles = StyleSheet.create({
   remainingTimeTitle: {
     color: 'white',
     fontSize: 30,
-    fontFamily: 'Alegreya-Regular',
+    fontFamily: 'Alegreya-bold',
   },
   remainingTime: {
     color: 'white',
     fontSize: 40,
-    fontFamily: 'Alegreya-Regular',
+    fontFamily: 'Alegreya-bold',
   },
   currentDateView: {
     alignItems: 'center',
@@ -186,12 +199,12 @@ const styles = StyleSheet.create({
   currentDateTxtTr: {
     color: 'white',
     fontSize: 24,
-    fontFamily: 'Alegreya-Regular',
+    fontFamily: 'Alegreya-bold',
   },
   currentDateMiladi: {
     color: 'white',
     fontSize: 24,
-    fontFamily: 'Alegreya-Regular',
+    fontFamily: 'Alegreya-bold',
   },
 });
 
