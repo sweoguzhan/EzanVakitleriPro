@@ -14,10 +14,9 @@ const AppRoutes: React.FC = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="MonthlyPrayTimes" component={MonthlyPrayTimes} />
-
-      <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="MonthlyPrayTimes" component={MonthlyPrayTimes} />
+        <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="Compass" component={Compass} />
     </Stack.Navigator>
   );

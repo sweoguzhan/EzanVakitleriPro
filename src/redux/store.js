@@ -1,7 +1,7 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {persistStore, persistReducer} from 'redux-persist';
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import prayerTimesReducer from './prayerTimesSlice';
 
 const persistConfig = {
@@ -19,9 +19,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
 });
 
 export const persistor = persistStore(store);
+
+// RootState tipini buradan çıkarıyoruz
+export type RootState = ReturnType<typeof rootReducer>;

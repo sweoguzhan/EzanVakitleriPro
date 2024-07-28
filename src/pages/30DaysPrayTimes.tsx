@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text} from 'native-base';
 import {
   SafeAreaView,
@@ -13,8 +13,9 @@ import {useSelector} from 'react-redux';
 
 const MonthlyPrayTimes = () => {
   const {prayerTimes} = useSelector(state => state.prayerTimes);
-
-  return (
+  const todayDateIso8061 = new Date().toISOString().split('T')[0];
+    const todayDate = todayDateIso8061.split('-').reverse().join('.');
+    return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.headerFixed}>
         <View style={styles.headerView}>
@@ -27,7 +28,7 @@ const MonthlyPrayTimes = () => {
       <ScrollView>
         {prayerTimes.map((day: any, index: any) => (
           <View key={index} style={styles.scollableViewItem}>
-            <View style={styles.mainView}>
+            <View style={todayDate === day.MiladiTarihKisa ? styles.mainViewToday : styles.mainView}>
               <View style={styles.dateView}>
                 <Text style={styles.dateTxt}>{day.MiladiTarihUzun}</Text>
                 <Text style={styles.dateTxt}>{day.HicriTarihUzun}</Text>
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
   },
   timeTxt: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Alegreya-Black',
   },
   vakitTxt: {
@@ -114,6 +115,21 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     borderRadius: 10,
     backgroundColor: '#363636',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 10},
+    shadowOpacity: 0.4,
+    shadowRadius: 10,
+    elevation: 10,
+  },
+  mainViewToday: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    borderRadius: 10,
+    backgroundColor: '#404040',
   },
   vakitView: {
     display: 'flex',

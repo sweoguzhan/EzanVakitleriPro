@@ -5,9 +5,9 @@ import {
   Image,
   Text,
   ScrollView,
-  Dimensions,
+  Dimensions, TouchableOpacity,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {SvgXml} from 'react-native-svg';
 // @ts-ignore
 import FajrBg from '../assets/backgrounds/Fajr.png';
@@ -29,6 +29,8 @@ import {Zhuhur} from '../assets/icons/Zhuhur';
 import {Ashar} from '../assets/icons/Ashar';
 import {Maghrib} from '../assets/icons/Maghrib';
 import {Isya} from '../assets/icons/Isya';
+
+import {ActivityIndicator} from "react-native";
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -54,8 +56,9 @@ const getNextPrayerTime = (currentTime: any, prayerTimes: any) => {
   return null;
 };
 
-const Home = () => {
-  const {prayerTimes} = useSelector(state => state.prayerTimes);
+const Home = ({navigation}) => {
+  const {prayerTimes, countryName, cityName, districtName} = useSelector(state => state.prayerTimes);
+
   const [remainingTime, setRemainingTime] = useState(null);
   const [nextPrayer, setNextPrayer] = useState(null);
   const [currentPrayerTimes, setCurrentPrayerTimes] = useState(null);
@@ -95,7 +98,13 @@ const Home = () => {
       const todayPrayerTimes = getCurrentPrayerTimes(prayerTimes);
       setCurrentPrayerTimes(todayPrayerTimes);
     }
+
   }, [prayerTimes]);
+
+  const goToSettingsPage = () => {
+    navigation.navigate('Settings');
+  }
+
   useEffect(() => {
     const interval = setInterval(() => {
       const currentTime = new Date();
@@ -134,35 +143,47 @@ const Home = () => {
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.bgAsrContainer}>
-        <Image source={backgroundImage} style={styles.imageBgStyling} />
-      </View>
-      <View style={styles.contentContainer}>
-        <View style={styles.remainingTimeView}>
-          <Text style={styles.remainingTimeTitle}>
-            {nextPrayer ? `${nextPrayer} Vaktine Kalan` : 'Namaz vakti geçti'}
-          </Text>
-          <Text style={styles.remainingTime}>{remainingTime}</Text>
-        </View>
-        <View style={styles.currentDateView}>
-          <Text style={styles.currentDateTxtTr}>
-            {prayerTimes[0].MiladiTarihUzun}
-          </Text>
-          <Text style={styles.currentDateMiladi}>
-            {prayerTimes[0].HicriTarihUzun}
-          </Text>
-        </View>
-        <ScrollView contentContainerStyle={styles.scrollViewStyling}>
-          {renderTimeView('Imsak', prayerTimes[0].Imsak, Shubuh)}
-          {renderTimeView('Gunes', prayerTimes[0].Gunes, Dhuha)}
-          {renderTimeView('Ogle', prayerTimes[0].Ogle, Zhuhur)}
-          {renderTimeView('Ikindi', prayerTimes[0].Ikindi, Ashar)}
-          {renderTimeView('Aksam', prayerTimes[0].Aksam, Maghrib)}
-          {renderTimeView('Yatsi', prayerTimes[0].Yatsi, Isya)}
-        </ScrollView>
-      </View>
-    </View>
+      <>
+        {prayerTimes.length ? (
+            <View style={styles.container}>
+              <View style={styles.bgAsrContainer}>
+                <Image source={backgroundImage} style={styles.imageBgStyling} />
+              </View>
+              <View style={styles.contentContainer}>
+                <View style={styles.remainingTimeView}>
+                  <Text style={styles.remainingTimeTitle}>
+                    {nextPrayer ? `${nextPrayer} Vaktine Kalan` : 'Namaz vakti geçti'}
+                  </Text>
+                  <Text style={styles.remainingTime}>{remainingTime}</Text>
+                </View>
+                <View style={styles.currentDateView}>
+                  <Text style={styles.currentDateTxtTr}>
+                    {prayerTimes[0].MiladiTarihUzun}
+                  </Text>
+                  <Text style={styles.currentDateMiladi}>
+                    {prayerTimes[0].HicriTarihUzun}
+                  </Text>
+                </View>
+                <TouchableOpacity onPress={goToSettingsPage}>
+                  <Text style={styles.locationTxt}>
+                    {cityName} - {districtName}
+                  </Text>
+                </TouchableOpacity>
+                <ScrollView contentContainerStyle={styles.scrollViewStyling}>
+                  {renderTimeView('Imsak', prayerTimes[0].Imsak, Shubuh)}
+                  {renderTimeView('Gunes', prayerTimes[0].Gunes, Dhuha)}
+                  {renderTimeView('Ogle', prayerTimes[0].Ogle, Zhuhur)}
+                  {renderTimeView('Ikindi', prayerTimes[0].Ikindi, Ashar)}
+                  {renderTimeView('Aksam', prayerTimes[0].Aksam, Maghrib)}
+                  {renderTimeView('Yatsi', prayerTimes[0].Yatsi, Isya)}
+                </ScrollView>
+              </View>
+            </View>
+        ) : (
+            <ActivityIndicator size="large" color="#0000ff" />
+        )}
+      </>
+
   );
 };
 
@@ -262,6 +283,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 24,
     fontFamily: 'Alegreya-bold',
+  },
+  locationTxt:{
+    color: 'white',
+    fontSize: 18,
+    fontFamily: 'Alegreya-bold',
+    textTransform: 'capitalize',
   },
   errorText: {
     color: 'red',
