@@ -1,216 +1,64 @@
+import React from 'react';
 import {Text} from 'native-base';
-import {SafeAreaView, View, StyleSheet, ScrollView} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import {SvgXml} from 'react-native-svg';
 import {ArrowLeft} from '../assets/icons/ArrowLeft';
-import {Isya} from '../assets/icons/Isya';
-import {Maghrib} from '../assets/icons/Maghrib';
-import {Zhuhur} from '../assets/icons/Zhuhur';
-import {Ashar} from '../assets/icons/Ashar';
-import {Dhuha} from '../assets/icons/Dhuha';
-import {Shubuh} from '../assets/icons/Shubuh';
+import {useSelector} from 'react-redux';
 
 const MonthlyPrayTimes = () => {
+  const {prayerTimes} = useSelector(state => state.prayerTimes);
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.headerFixed}>
         <View style={styles.headerView}>
-          <SvgXml xml={ArrowLeft} />
+          <TouchableOpacity>
+            <SvgXml xml={ArrowLeft} />
+          </TouchableOpacity>
           <Text style={styles.headerTxt}>İmsakiye</Text>
         </View>
       </View>
-      <ScrollView contentContainerStyle={styles.scrollViewStyle}>
-        <View style={styles.scollableViewItem}>
-          <View style={styles.mainView}>
-            <View style={styles.dateView}>
-              <Text style={styles.dateTxt}>23 Temmuz,Pazartesi</Text>
-              <Text style={styles.dateTxt}>16 Muharrem 1446</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.scollableViewItem}>
-          <View style={styles.mainView}>
-            <View style={styles.dateView}>
-              <Text style={styles.dateTxt}>23 Temmuz,Pazartesi</Text>
-              <Text style={styles.dateTxt}>16 Muharrem 1446</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
+      <ScrollView>
+        {prayerTimes.map((day: any, index: any) => (
+          <View key={index} style={styles.scollableViewItem}>
+            <View style={styles.mainView}>
+              <View style={styles.dateView}>
+                <Text style={styles.dateTxt}>{day.MiladiTarihUzun}</Text>
+                <Text style={styles.dateTxt}>{day.HicriTarihUzun}</Text>
+              </View>
+              <View style={styles.vakitView}>
+                <Text style={styles.vakitTxt}>İmsak</Text>
+                <Text style={styles.timeTxt}>{day.Imsak}</Text>
+              </View>
+              <View style={styles.vakitView}>
+                <Text style={styles.vakitTxt}>Güneş</Text>
+                <Text style={styles.timeTxt}>{day.Gunes}</Text>
+              </View>
+              <View style={styles.vakitView}>
+                <Text style={styles.vakitTxt}>Öğle</Text>
+                <Text style={styles.timeTxt}>{day.Ogle}</Text>
+              </View>
+              <View style={styles.vakitView}>
+                <Text style={styles.vakitTxt}>İkindi</Text>
+                <Text style={styles.timeTxt}>{day.Ikindi}</Text>
+              </View>
+              <View style={styles.vakitView}>
+                <Text style={styles.vakitTxt}>Akşam</Text>
+                <Text style={styles.timeTxt}>{day.Aksam}</Text>
+              </View>
+              <View style={styles.vakitView}>
+                <Text style={styles.vakitTxt}>Yatsı</Text>
+                <Text style={styles.timeTxt}>{day.Yatsi}</Text>
+              </View>
             </View>
           </View>
-        </View>
-        <View style={styles.scollableViewItem}>
-          <View style={styles.mainView}>
-            <View style={styles.dateView}>
-              <Text style={styles.dateTxt}>23 Temmuz,Pazartesi</Text>
-              <Text style={styles.dateTxt}>16 Muharrem 1446</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.scollableViewItem}>
-          <View style={styles.mainView}>
-            <View style={styles.dateView}>
-              <Text style={styles.dateTxt}>23 Temmuz,Pazartesi</Text>
-              <Text style={styles.dateTxt}>16 Muharrem 1446</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.scollableViewItem}>
-          <View style={styles.mainView}>
-            <View style={styles.dateView}>
-              <Text style={styles.dateTxt}>23 Temmuz,Pazartesi</Text>
-              <Text style={styles.dateTxt}>16 Muharrem 1446</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.scollableViewItem}>
-          <View style={styles.mainView}>
-            <View style={styles.dateView}>
-              <Text style={styles.dateTxt}>23 Temmuz,Pazartesi</Text>
-              <Text style={styles.dateTxt}>16 Muharrem 1446</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-            <View style={styles.vakitView}>
-              <Text style={styles.vakitTxt}>Imsak</Text>
-              <Text style={styles.timeTxt}>03:54</Text>
-            </View>
-          </View>
-        </View>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
@@ -261,7 +109,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
-
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
