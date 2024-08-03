@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   View,
   StyleSheet,
-  Image,
+  Animated,
   Text,
   ScrollView,
-  Dimensions, TouchableOpacity,
+  Dimensions,
+  TouchableOpacity,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {SvgXml} from 'react-native-svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { SvgXml } from 'react-native-svg';
 // @ts-ignore
 import FajrBg from '../assets/backgrounds/Fajr.png';
 // @ts-ignore
@@ -21,20 +22,19 @@ import AsrBg from '../assets/backgrounds/Asr.png';
 import MaghribBg from '../assets/backgrounds/Maghrib.png';
 // @ts-ignore
 import IshaBg from '../assets/backgrounds/Isha.png';
-// @ts-ignore
 
-import {Shubuh} from '../assets/icons/Shubuh';
-import {Dhuha} from '../assets/icons/Dhuha';
-import {Zhuhur} from '../assets/icons/Zhuhur';
-import {Ashar} from '../assets/icons/Ashar';
-import {Maghrib} from '../assets/icons/Maghrib';
-import {Isya} from '../assets/icons/Isya';
+import { Shubuh } from '../assets/icons/Shubuh';
+import { Dhuha } from '../assets/icons/Dhuha';
+import { Zhuhur } from '../assets/icons/Zhuhur';
+import { Ashar } from '../assets/icons/Ashar';
+import { Maghrib } from '../assets/icons/Maghrib';
+import { Isya } from '../assets/icons/Isya';
 
-import {ActivityIndicator} from "react-native";
+import { ActivityIndicator } from 'react-native';
 
-const {width: screenWidth} = Dimensions.get('window');
+const { width: screenWidth } = Dimensions.get('window');
 
-const getNextPrayerTime = (currentTime: any, prayerTimes: any) => {
+const getNextPrayerTime = (currentTime, prayerTimes) => {
   if (!prayerTimes) {
     return null;
   }
@@ -50,28 +50,34 @@ const getNextPrayerTime = (currentTime: any, prayerTimes: any) => {
     const prayerTime = new Date();
     prayerTime.setHours(hour, minute, 0, 0);
     if (prayerTime > currentTime) {
-      return {name: times[i], time: prayerTime};
+      return { name: times[i], time: prayerTime };
     }
   }
   return null;
 };
 
-const Home = ({navigation}) => {
-  const {prayerTimes, countryName, cityName, districtName} = useSelector(state => state.prayerTimes);
+const Home = ({ navigation }) => {
+  const { prayerTimes, countryName, cityName, districtName } = useSelector(
+      state => state.prayerTimes,
+  );
 
   const [remainingTime, setRemainingTime] = useState(null);
   const [nextPrayer, setNextPrayer] = useState(null);
   const [currentPrayerTimes, setCurrentPrayerTimes] = useState(null);
+  const [backgroundImage, setBackgroundImage] = useState(FajrBg);
+
+  const [todayData, setTodayData] = useState([]);
+  const fadeAnim = useRef(new Animated.Value(1)).current;
 
   const getCurrentPrayerTimes = prayerTimes => {
     const currentDate = new Date().toISOString().split('T')[0];
 
     const formattedDate = currentDate.split('-').reverse().join('.');
-
-    console.log('currentDate', formattedDate);
     const currentDay = prayerTimes.find(
-      day => day.MiladiTarihKisa === formattedDate,
+        day => day.MiladiTarihKisa === formattedDate,
     );
+    setTodayData(currentDay)
+
     return currentDay;
   };
 
@@ -93,17 +99,17 @@ const Home = ({navigation}) => {
         return FajrBg;
     }
   };
+
   useEffect(() => {
     if (prayerTimes.length > 0) {
       const todayPrayerTimes = getCurrentPrayerTimes(prayerTimes);
       setCurrentPrayerTimes(todayPrayerTimes);
     }
-
   }, [prayerTimes]);
 
   const goToSettingsPage = () => {
     navigation.navigate('Settings');
-  }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -112,34 +118,48 @@ const Home = ({navigation}) => {
       if (next) {
         const timeDiff = next.time - currentTime;
         setRemainingTime(new Date(timeDiff).toISOString().substr(11, 8));
-        setNextPrayer(next.name);
+        if (next.name !== nextPrayer) {
+          Animated.timing(fadeAnim, {
+            toValue: 0,
+            duration: 1000,
+            useNativeDriver: true,
+          }).start(() => {
+            setNextPrayer(next.name);
+            setBackgroundImage(getBackgroundImage(next.name));
+            // Fade in the new background
+            Animated.timing(fadeAnim, {
+              toValue: 1,
+              duration: 1000,
+              useNativeDriver: true,
+            }).start();
+          });
+        }
       } else {
         setRemainingTime(null);
         setNextPrayer(null);
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [currentPrayerTimes]);
+  }, [currentPrayerTimes, nextPrayer]);
+
   if (!prayerTimes.length) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.errorText}>Namaz vakitleri bulunamadı.</Text>
-      </View>
+        <View style={styles.container}>
+          <Text style={styles.errorText}>Namaz vakitleri bulunamadı.</Text>
+        </View>
     );
   }
 
-  const backgroundImage = getBackgroundImage(nextPrayer);
-
-  const renderTimeView = (name: any, time: any, icon: any) => (
-    <View style={nextPrayer === name ? styles.timeViewNext : styles.timeView}>
-      <View style={styles.timeIconView}>
-        <View style={styles.flexView}>
-          <SvgXml xml={icon} />
-          <Text style={styles.timeTxt}>{name}</Text>
+  const renderTimeView = (name, time, icon) => (
+      <View style={nextPrayer === name ? styles.timeViewNext : styles.timeView}>
+        <View style={styles.timeIconView}>
+          <View style={styles.flexView}>
+            <SvgXml xml={icon} />
+            <Text style={styles.timeTxt}>{name}</Text>
+          </View>
+          <Text style={styles.timeTxt}>{time}</Text>
         </View>
-        <Text style={styles.timeTxt}>{time}</Text>
       </View>
-    </View>
   );
 
   return (
@@ -147,21 +167,26 @@ const Home = ({navigation}) => {
         {prayerTimes.length ? (
             <View style={styles.container}>
               <View style={styles.bgAsrContainer}>
-                <Image source={backgroundImage} style={styles.imageBgStyling} />
+                <Animated.Image
+                    source={backgroundImage}
+                    style={[styles.imageBgStyling, { opacity: fadeAnim }]}
+                />
               </View>
               <View style={styles.contentContainer}>
                 <View style={styles.remainingTimeView}>
                   <Text style={styles.remainingTimeTitle}>
-                    {nextPrayer ? `${nextPrayer} Vaktine Kalan` : 'Namaz vakti geçti'}
+                    {nextPrayer
+                        ? `${nextPrayer} Vaktine Kalan`
+                        : 'Namaz vakti geçti'}
                   </Text>
                   <Text style={styles.remainingTime}>{remainingTime}</Text>
                 </View>
                 <View style={styles.currentDateView}>
                   <Text style={styles.currentDateTxtTr}>
-                    {prayerTimes[0].MiladiTarihUzun}
+                    {todayData.MiladiTarihUzun}
                   </Text>
                   <Text style={styles.currentDateMiladi}>
-                    {prayerTimes[0].HicriTarihUzun}
+                    {todayData.HicriTarihUzun}
                   </Text>
                 </View>
                 <TouchableOpacity onPress={goToSettingsPage}>
@@ -170,12 +195,12 @@ const Home = ({navigation}) => {
                   </Text>
                 </TouchableOpacity>
                 <ScrollView contentContainerStyle={styles.scrollViewStyling}>
-                  {renderTimeView('Imsak', prayerTimes[0].Imsak, Shubuh)}
-                  {renderTimeView('Gunes', prayerTimes[0].Gunes, Dhuha)}
-                  {renderTimeView('Ogle', prayerTimes[0].Ogle, Zhuhur)}
-                  {renderTimeView('Ikindi', prayerTimes[0].Ikindi, Ashar)}
-                  {renderTimeView('Aksam', prayerTimes[0].Aksam, Maghrib)}
-                  {renderTimeView('Yatsi', prayerTimes[0].Yatsi, Isya)}
+                  {renderTimeView('Imsak', todayData.Imsak, Shubuh)}
+                  {renderTimeView('Gunes', todayData.Gunes, Dhuha)}
+                  {renderTimeView('Ogle', todayData.Ogle, Zhuhur)}
+                  {renderTimeView('Ikindi', todayData.Ikindi, Ashar)}
+                  {renderTimeView('Aksam', todayData.Aksam, Maghrib)}
+                  {renderTimeView('Yatsi', todayData.Yatsi, Isya)}
                 </ScrollView>
               </View>
             </View>
@@ -183,7 +208,6 @@ const Home = ({navigation}) => {
             <ActivityIndicator size="large" color="#0000ff" />
         )}
       </>
-
   );
 };
 
@@ -235,7 +259,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 10},
+    shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.4,
     shadowRadius: 10,
     elevation: 10,
@@ -244,7 +268,7 @@ const styles = StyleSheet.create({
   timeTxt: {
     color: 'white',
     fontSize: 24,
-    fontFamily: 'Alegreya-bold',
+    fontFamily: 'Alegreya-Regular',
   },
   timeIconView: {
     flexDirection: 'row',
@@ -284,7 +308,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: 'Alegreya-bold',
   },
-  locationTxt:{
+  locationTxt: {
     color: 'white',
     fontSize: 18,
     fontFamily: 'Alegreya-bold',

@@ -26,5 +26,4 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-// RootState tipini buradan çıkarıyoruz
 export type RootState = ReturnType<typeof rootReducer>;

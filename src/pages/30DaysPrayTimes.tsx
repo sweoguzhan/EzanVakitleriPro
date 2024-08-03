@@ -11,24 +11,32 @@ import {SvgXml} from 'react-native-svg';
 import {ArrowLeft} from '../assets/icons/ArrowLeft';
 import {useSelector} from 'react-redux';
 
-const MonthlyPrayTimes = () => {
+// @ts-ignore
+const MonthlyPrayTimes = ({navigation}) => {
+  // @ts-ignore
   const {prayerTimes} = useSelector(state => state.prayerTimes);
   const todayDateIso8061 = new Date().toISOString().split('T')[0];
-    const todayDate = todayDateIso8061.split('-').reverse().join('.');
-    return (
+  const todayDate = todayDateIso8061.split('-').reverse().join('.');
+
+  const navigateHomePage = () => {
+    navigation.navigate('Home');
+  }
+  return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.headerFixed}>
         <View style={styles.headerView}>
-          <TouchableOpacity>
-            <SvgXml xml={ArrowLeft} />
-          </TouchableOpacity>
           <Text style={styles.headerTxt}>İmsakiye</Text>
         </View>
       </View>
       <ScrollView>
         {prayerTimes.map((day: any, index: any) => (
           <View key={index} style={styles.scollableViewItem}>
-            <View style={todayDate === day.MiladiTarihKisa ? styles.mainViewToday : styles.mainView}>
+            <View
+              style={
+                todayDate === day.MiladiTarihKisa
+                  ? styles.mainViewToday
+                  : styles.mainView
+              }>
               <View style={styles.dateView}>
                 <Text style={styles.dateTxt}>{day.MiladiTarihUzun}</Text>
                 <Text style={styles.dateTxt}>{day.HicriTarihUzun}</Text>
@@ -83,10 +91,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Alegreya-Black',
   },
   headerView: {
-    width: '60%',
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
   },
   scollableViewItem: {
     padding: 10,
