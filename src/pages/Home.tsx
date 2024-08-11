@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {
   View,
   StyleSheet,
@@ -8,8 +8,8 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { SvgXml } from 'react-native-svg';
+import {useDispatch, useSelector} from 'react-redux';
+import {SvgXml} from 'react-native-svg';
 // @ts-ignore
 import FajrBg from '../assets/backgrounds/Fajr.png';
 // @ts-ignore
@@ -23,16 +23,16 @@ import MaghribBg from '../assets/backgrounds/Maghrib.png';
 // @ts-ignore
 import IshaBg from '../assets/backgrounds/Isha.png';
 
-import { Shubuh } from '../assets/icons/Shubuh';
-import { Dhuha } from '../assets/icons/Dhuha';
-import { Zhuhur } from '../assets/icons/Zhuhur';
-import { Ashar } from '../assets/icons/Ashar';
-import { Maghrib } from '../assets/icons/Maghrib';
-import { Isya } from '../assets/icons/Isya';
+import {Shubuh} from '../assets/icons/Shubuh';
+import {Dhuha} from '../assets/icons/Dhuha';
+import {Zhuhur} from '../assets/icons/Zhuhur';
+import {Ashar} from '../assets/icons/Ashar';
+import {Maghrib} from '../assets/icons/Maghrib';
+import {Isya} from '../assets/icons/Isya';
 
-import { ActivityIndicator } from 'react-native';
+import {ActivityIndicator} from 'react-native';
 
-const { width: screenWidth } = Dimensions.get('window');
+const {width: screenWidth} = Dimensions.get('window');
 
 const getNextPrayerTime = (currentTime, prayerTimes) => {
   if (!prayerTimes) {
@@ -50,15 +50,15 @@ const getNextPrayerTime = (currentTime, prayerTimes) => {
     const prayerTime = new Date();
     prayerTime.setHours(hour, minute, 0, 0);
     if (prayerTime > currentTime) {
-      return { name: times[i], time: prayerTime };
+      return {name: times[i], time: prayerTime};
     }
   }
   return null;
 };
 
-const Home = ({ navigation }) => {
-  const { prayerTimes, countryName, cityName, districtName } = useSelector(
-      state => state.prayerTimes,
+const Home = ({navigation}) => {
+  const {prayerTimes, countryName, cityName, districtName} = useSelector(
+    state => state.prayerTimes,
   );
 
   const [remainingTime, setRemainingTime] = useState(null);
@@ -70,13 +70,14 @@ const Home = ({ navigation }) => {
   const fadeAnim = useRef(new Animated.Value(1)).current;
 
   const getCurrentPrayerTimes = prayerTimes => {
-    const currentDate = new Date().toISOString().split('T')[0];
-
-    const formattedDate = currentDate.split('-').reverse().join('.');
+    const currentDate = new Date();
+    const formattedDate = currentDate.getDate().toString().padStart(2, '0') + '.' +
+        (currentDate.getMonth() + 1).toString().padStart(2, '0') + '.' +
+        currentDate.getFullYear();
     const currentDay = prayerTimes.find(
-        day => day.MiladiTarihKisa === formattedDate,
+      day => day.MiladiTarihKisa === formattedDate,
     );
-    setTodayData(currentDay)
+    setTodayData(currentDay);
 
     return currentDay;
   };
@@ -144,70 +145,70 @@ const Home = ({ navigation }) => {
 
   if (!prayerTimes.length) {
     return (
-        <View style={styles.container}>
-          <Text style={styles.errorText}>Namaz vakitleri bulunamadı.</Text>
-        </View>
+      <View style={styles.container}>
+        <Text style={styles.errorText}>Namaz vakitleri bulunamadı.</Text>
+      </View>
     );
   }
 
   const renderTimeView = (name, time, icon) => (
-      <View style={nextPrayer === name ? styles.timeViewNext : styles.timeView}>
-        <View style={styles.timeIconView}>
-          <View style={styles.flexView}>
-            <SvgXml xml={icon} />
-            <Text style={styles.timeTxt}>{name}</Text>
-          </View>
-          <Text style={styles.timeTxt}>{time}</Text>
+    <View style={nextPrayer === name ? styles.timeViewNext : styles.timeView}>
+      <View style={styles.timeIconView}>
+        <View style={styles.flexView}>
+          <SvgXml xml={icon} />
+          <Text style={styles.timeTxt}>{name}</Text>
         </View>
+        <Text style={styles.timeTxt}>{time}</Text>
       </View>
+    </View>
   );
 
   return (
-      <>
-        {prayerTimes.length ? (
-            <View style={styles.container}>
-              <View style={styles.bgAsrContainer}>
-                <Animated.Image
-                    source={backgroundImage}
-                    style={[styles.imageBgStyling, { opacity: fadeAnim }]}
-                />
-              </View>
-              <View style={styles.contentContainer}>
-                <View style={styles.remainingTimeView}>
-                  <Text style={styles.remainingTimeTitle}>
-                    {nextPrayer
-                        ? `${nextPrayer} Vaktine Kalan`
-                        : 'Namaz vakti geçti'}
-                  </Text>
-                  <Text style={styles.remainingTime}>{remainingTime}</Text>
-                </View>
-                <View style={styles.currentDateView}>
-                  <Text style={styles.currentDateTxtTr}>
-                    {todayData.MiladiTarihUzun}
-                  </Text>
-                  <Text style={styles.currentDateMiladi}>
-                    {todayData.HicriTarihUzun}
-                  </Text>
-                </View>
-                <TouchableOpacity onPress={goToSettingsPage}>
-                  <Text style={styles.locationTxt}>
-                    {cityName} - {districtName}
-                  </Text>
-                </TouchableOpacity>
-                <ScrollView contentContainerStyle={styles.scrollViewStyling}>
-                  {renderTimeView('Imsak', todayData.Imsak, Shubuh)}
-                  {renderTimeView('Gunes', todayData.Gunes, Dhuha)}
-                  {renderTimeView('Ogle', todayData.Ogle, Zhuhur)}
-                  {renderTimeView('Ikindi', todayData.Ikindi, Ashar)}
-                  {renderTimeView('Aksam', todayData.Aksam, Maghrib)}
-                  {renderTimeView('Yatsi', todayData.Yatsi, Isya)}
-                </ScrollView>
-              </View>
+    <>
+      {prayerTimes.length ? (
+        <View style={styles.container}>
+          <View style={styles.bgAsrContainer}>
+            <Animated.Image
+              source={backgroundImage}
+              style={[styles.imageBgStyling, {opacity: fadeAnim}]}
+            />
+          </View>
+          <View style={styles.contentContainer}>
+            <View style={styles.remainingTimeView}>
+              <Text style={styles.remainingTimeTitle}>
+                {nextPrayer
+                  ? `${nextPrayer} Vaktine Kalan`
+                  : 'Namaz vakti geçti'}
+              </Text>
+              <Text style={styles.remainingTime}>{remainingTime}</Text>
             </View>
-        ) : (
-            <ActivityIndicator size="large" color="#0000ff" />
-        )}
-      </>
+            <View style={styles.currentDateView}>
+              <Text style={styles.currentDateTxtTr}>
+                {todayData.MiladiTarihUzun}
+              </Text>
+              <Text style={styles.currentDateMiladi}>
+                {todayData.HicriTarihUzun}
+              </Text>
+            </View>
+            <TouchableOpacity onPress={goToSettingsPage}>
+              <Text style={styles.locationTxt}>
+                {cityName} - {districtName}
+              </Text>
+            </TouchableOpacity>
+            <ScrollView contentContainerStyle={styles.scrollViewStyling}>
+              {renderTimeView('Imsak', todayData.Imsak, Shubuh)}
+              {renderTimeView('Gunes', todayData.Gunes, Dhuha)}
+              {renderTimeView('Ogle', todayData.Ogle, Zhuhur)}
+              {renderTimeView('Ikindi', todayData.Ikindi, Ashar)}
+              {renderTimeView('Aksam', todayData.Aksam, Maghrib)}
+              {renderTimeView('Yatsi', todayData.Yatsi, Isya)}
+            </ScrollView>
+          </View>
+        </View>
+      ) : (
+        <ActivityIndicator size="large" color="#0000ff" />
+      )}
+    </>
   );
 };
 
@@ -259,7 +260,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 10 },
+    shadowOffset: {width: 0, height: 10},
     shadowOpacity: 0.4,
     shadowRadius: 10,
     elevation: 10,

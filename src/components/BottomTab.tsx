@@ -13,8 +13,7 @@ const TabBar = ({state, descriptors, navigation}: BottomTabBarProps) => {
                     width: 0,
                     height: -2,
                 },
-                borderRadius:10,
-                shadowOpacity: 0.1,
+                shadowOpacity: 0.3,
                 shadowRadius: 2,
                 elevation: 4,
             }}>

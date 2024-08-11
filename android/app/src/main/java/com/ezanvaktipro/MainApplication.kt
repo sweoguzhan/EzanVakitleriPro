@@ -10,6 +10,10 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage
+import com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerService
+import com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver
+import com.dieam.reactnativepushnotification.modules.RNPushNotification
 
 class MainApplication : Application(), ReactApplication {
 
@@ -38,6 +42,28 @@ class MainApplication : Application(), ReactApplication {
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
+    }
+
+    // Initialize Push Notifications
+    RNPushNotification.configure(applicationContext)
+    createNotificationChannel()
+  }
+
+  private fun createNotificationChannel() {
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+      val channel = NotificationChannel(
+        "prayer-time-channel",
+        "Prayer Time Channel",
+        NotificationManager.IMPORTANCE_HIGH
+      ).apply {
+        description = "A channel to notify about prayer times"
+        enableLights(true)
+        lightColor = Color.GREEN
+        enableVibration(true)
+      }
+
+      val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+      manager.createNotificationChannel(channel)
     }
   }
 }
